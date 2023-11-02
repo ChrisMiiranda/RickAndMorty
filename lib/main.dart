@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'R&M API TEST',
+      title: 'Rick And Morty API',
       home: HomePage(),
     );
   }

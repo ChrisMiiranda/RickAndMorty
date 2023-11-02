@@ -134,9 +134,10 @@ packages:
   rick_and_morty_api:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: rick_and_morty_api
+      sha256: "10464ce5ea57cc4c391b2664187da42207d285e335aaa172c0ca7c9151a8ca04"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.2"
   sky_engine:
     dependency: transitive

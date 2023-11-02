@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'views/all_chars_list.dart';
 import 'views/all_eps_list.dart';
-import 'views/all_locations_list.dart';
-import 'views/filtered_chars_list.dart';
-import 'views/filtered_eps_list.dart';
-import 'views/filtered_locations_list.dart';
-import 'views/specified_chars_list.dart';
-import 'views/specified_eps_list.dart';
-import 'views/specified_locations_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,15 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 final _tabs = [
-  'CHARACTER',
-  'EPISODES',
-  'LOCATIONS',
-  'FILTERED CHARACTERS',
-  'FILTERED EPISODES',
-  'FILTERED LOCATIONS',
-  'SPECIFIED CHARACTERS',
-  'SPECIFIED EPISODES',
-  'SPECIFIED LOCATIONS',
+  'PERSONAGENS',
+  'EPISÓDIOS',
 ];
 
 class _HomePageState extends State<HomePage> {
@@ -36,11 +22,10 @@ class _HomePageState extends State<HomePage> {
       length: _tabs.length,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('R&M DART API'),
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.open_in_new)),
-          ],
+          backgroundColor: Color(0xFF5CAD4A),
+          title: Text('Rick And Morty API'),
           bottom: TabBar(
+            indicatorColor: Color(0xFFF0F2EB),
             isScrollable: true,
             tabs: [for (final tab in _tabs) Tab(child: Text(tab))],
           ),
@@ -50,13 +35,6 @@ class _HomePageState extends State<HomePage> {
           children: [
             CharacterListView(),
             EpisodeListView(),
-            LocationListView(),
-            FilteredCharacterListView(),
-            FilteredEpisodeListView(),
-            FilteredLocationListView(),
-            SpecifiedCharacterListView(),
-            SpecifiedEpisodeListView(),
-            SpecifiedLocationListView(),
           ],
         ),
       ),

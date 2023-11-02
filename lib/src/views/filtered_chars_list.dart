@@ -3,11 +3,7 @@ import 'package:rick_and_morty_api/rick_and_morty_api.dart';
 
 import '../globals.dart';
 
-var _filters = CharacterFilters(
-  name: 'Rick',
-  gender: CharacterGender.male,
-  status: CharacterStatus.alive,
-);
+var _filters = CharacterFilters();
 
 class FilteredCharacterListView extends StatelessWidget {
   const FilteredCharacterListView({
