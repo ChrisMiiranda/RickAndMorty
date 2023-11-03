@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_rm_api/src/helper/size_config.dart';
 
 import 'views/all_chars_list.dart';
 import 'views/all_eps_list.dart';
@@ -18,12 +19,24 @@ final _tabs = [
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return DefaultTabController(
       length: _tabs.length,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF5CAD4A),
-          title: Text('Rick And Morty API'),
+          title: Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: 
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(child: Image.asset('assets/images/logo.png', height: heightPercent(15),)),
+                  SizedBox(child: Image.asset('assets/images/portal.png', height: heightPercent(15),)),
+                ],
+              )
+            ,
+          ),
           bottom: TabBar(
             indicatorColor: Color(0xFFF0F2EB),
             isScrollable: true,
@@ -31,7 +44,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: TabBarView(
-          physics: ClampingScrollPhysics(),
           children: [
             CharacterListView(),
             EpisodeListView(),

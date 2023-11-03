@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_api/rick_and_morty_api.dart';
 import 'package:test_rm_api/src/components/ShowCharacterDetails.dart';
+import 'package:test_rm_api/src/helper/size_config.dart';
 
 import '../globals.dart';
 
@@ -21,172 +22,200 @@ class CharacterListView extends StatefulWidget {
 class _CharacterListViewState extends State<CharacterListView> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Character>>(
-      future: charactersClass.getFilteredCharacters(_filters),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError || snapshot.data == null) {
-          return Center(child: Text('Error Loading Data.'));
-        } else {
-          var characters = snapshot.data!;
-          return Padding(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Container(
-                  height: 70,
-                  child: Row(
-                    children: [
-                      Text("Filtros:"),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Gênero"),
-                          DropdownButton(
-                            value: genderValue,
-                            icon: const Icon(Icons.keyboard_arrow_down),
-                            items: genderOptions.map((String items) {
-                              return DropdownMenuItem(
-                                value: items,
-                                child: Text(items),
-                              );
-                            }).toList(),
-                            // After selecting the desired option,it will
-                            // change button value to selected value
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                genderValue = newValue!;
-                                _filters = _getFilters();
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Status"),
-                          DropdownButton(
-                            value: statusValue,
-                            icon: const Icon(Icons.keyboard_arrow_down),
-                            items: statusOptions.map((String items) {
-                              return DropdownMenuItem(
-                                value: items,
-                                child: Text(items),
-                              );
-                            }).toList(),
-                            // After selecting the desired option,it will
-                            // change button value to selected value
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                statusValue = newValue!;
-                                _filters = _getFilters();
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Espécie"),
-                          DropdownButton(
-                            value: specieValue,
-                            icon: const Icon(Icons.keyboard_arrow_down),
-                            items: specieOptions.map((String items) {
-                              return DropdownMenuItem(
-                                value: items,
-                                child: Text(items),
-                              );
-                            }).toList(),
-                            // After selecting the desired option,it will
-                            // change button value to selected value
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                specieValue = newValue!;
-                                _filters = _getFilters();
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 15),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Nome"),
-                            TextFormField(
-                              scrollPadding: EdgeInsets.all(200),
-                              textInputAction: TextInputAction.next,
-                              textCapitalization: TextCapitalization.characters,
-                              controller: _name,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                contentPadding: EdgeInsets.all(15),
-                              ),
-                            ),
-                          ],
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+          child: Wrap(
+            children: [
+              Container(
+                child: Wrap(
+                  // alignment: WrapAlignment.start,
+                  spacing: widthPercent(2),
+                  children: [
+                    Text("Filtros:"),
+                    SizedBox(width: widthPercent(2)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Gênero"),
+                        DropdownButton(
+                          value: genderValue,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: genderOptions.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          // After selecting the desired option,it will
+                          // change button value to selected value
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              genderValue = newValue!;
+                              _filters = _getFilters();
+                            });
+                          },
                         ),
-                      ),
-                      SizedBox(width: 15),
-                      IconButton(onPressed: () {
-                        setState(() {
-                          _filters = _getFilters();
-                        });
-                      }, icon: Icon(Icons.search)),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: ListView.separated(
-                    itemCount: characters.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          showCharacterDetails(characters[index], context);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border:
-                                Border.all(width: 1.5, color: Colors.black87),
-                          ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Status"),
+                        DropdownButton(
+                          value: statusValue,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: statusOptions.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          // After selecting the desired option,it will
+                          // change button value to selected value
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              statusValue = newValue!;
+                              _filters = _getFilters();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Espécie"),
+                        DropdownButton(
+                          value: specieValue,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: specieOptions.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          // After selecting the desired option,it will
+                          // change button value to selected value
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              specieValue = newValue!;
+                              _filters = _getFilters();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Nome"),
+                        Container(
+                          constraints: BoxConstraints(maxWidth: widthPercent(30)),
                           child: Row(
                             children: [
-                              SizedBox(
-                                height: 100,
-                                width: 100,
-                                child: Image.network(
-                                  characters[index].image,
-                                ),
-                              ),
                               Expanded(
-                                child: ListTile(
-                                  title: Text(characters[index].name),
+                                child: TextFormField(
+                                  scrollPadding: EdgeInsets.all(200),
+                                  textInputAction: TextInputAction.next,
+                                  textCapitalization: TextCapitalization.characters,
+                                  controller: _name,
+                                  keyboardType: TextInputType.text,
+                                  decoration: InputDecoration(
+                                    isCollapsed: true,
+                                    contentPadding: EdgeInsets.all(15),
+                                  ),
                                 ),
                               ),
+                              IconButton(onPressed: () {
+                                setState(() {
+                                  _filters = _getFilters();
+                                });
+                              }, icon: Icon(Icons.search)),
                             ],
                           ),
                         ),
-                      );
-                    },
-                    separatorBuilder: (context, index) => Container(
-                      height: 10,
-                      width: double.infinity,
+                      ],
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        }
-      },
+              ),
+            ],
+          ),
+        ),
+        FutureBuilder<List<Character>>(
+          future: charactersClass.getFilteredCharacters(_filters),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError || snapshot.data == null) {
+              return Center(child: Column(
+                children: [
+                  Text('Personagem não encontrado!'),
+                  Text("Verifique os filtros.")
+                ],
+              ));
+            } else {
+              var characters = snapshot.data!;
+              return Expanded(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: _calculateCrossAxisCount(context),
+                    childAspectRatio: widthPercent(.1),
+                  ),
+                  itemCount: characters.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.all(5),
+                      child: GestureDetector(
+                        onTap: () {
+                          showCharacterDetails(characters[index], context);
+                        },
+                        child: Material(
+                          elevation: heightPercent(1),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 1.5, color: Colors.black87),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  height: heightPercent(18),
+                                  width: heightPercent(18),
+                                  child: Image.network(
+                                    characters[index].image,
+                                  ),
+                                ),
+                                ListTile(
+                                  title: Text(characters[index].name, textAlign: TextAlign.center,),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                )
+              );
+            }
+          },
+        ),
+      ],
     );
+  }
+
+  int _calculateCrossAxisCount(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth < 600) {
+      return 3;
+    } else if (screenWidth < 900) {
+      return 4;
+    } else {
+      return 5;
+    }
   }
 
   _getFilters() {
