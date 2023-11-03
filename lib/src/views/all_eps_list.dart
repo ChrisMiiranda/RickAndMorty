@@ -22,60 +22,60 @@ class _EpisodeListViewState extends State<EpisodeListView> {
       children: [
         Padding(
           padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
-          child: Container(
-            height: heightPercent(14),
-            child: Row(
-              children: [
-                Text("Filtros:"),
-                SizedBox(width: widthPercent(2)),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Nome"),
-                      TextFormField(
-                        scrollPadding: EdgeInsets.all(200),
-                        textInputAction: TextInputAction.next,
-                        textCapitalization: TextCapitalization.characters,
-                        controller: _name,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          isCollapsed: true,
-                          contentPadding: EdgeInsets.all(15),
+          child: Wrap(
+            children: [
+              Container(
+                child: Wrap(
+                  children: [
+                    Text("Filtros:"),
+                    SizedBox(width: widthPercent(2)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Nome"),
+                        TextFormField(
+                          scrollPadding: EdgeInsets.all(200),
+                          textInputAction: TextInputAction.next,
+                          textCapitalization: TextCapitalization.characters,
+                          controller: _name,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            isCollapsed: true,
+                            contentPadding: EdgeInsets.all(15),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: widthPercent(5)),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Episódio"),
-                      TextFormField(
-                        scrollPadding: EdgeInsets.all(200),
-                        textInputAction: TextInputAction.next,
-                        textCapitalization: TextCapitalization.characters,
-                        controller: _ep,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          isCollapsed: true,
-                          contentPadding: EdgeInsets.all(15),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Episódio"),
+                        Row(
+                          children: [
+                            TextFormField(
+                              scrollPadding: EdgeInsets.all(200),
+                              textInputAction: TextInputAction.next,
+                              textCapitalization: TextCapitalization.characters,
+                              controller: _ep,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                isCollapsed: true,
+                                contentPadding: EdgeInsets.all(15),
+                              ),
+                            ),
+                            IconButton(onPressed: () {
+                              setState(() {
+                                _filters = _getFilters();
+                              });
+                            }, icon: Icon(Icons.search)),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: IconButton(onPressed: () {
-                    setState(() {
-                      _filters = _getFilters();
-                    });
-                  }, icon: Icon(Icons.search)),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         Expanded(

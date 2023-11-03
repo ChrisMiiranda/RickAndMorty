@@ -7,7 +7,11 @@ void showEpisodesDetails(Episode episode, BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Center(child: Text(episode.name)),
+        title: Center(
+            child: Text(
+          episode.name,
+          textAlign: TextAlign.center,
+        )),
         content: Wrap(
           children: [
             Center(
@@ -16,11 +20,13 @@ void showEpisodesDetails(Episode episode, BuildContext context) {
                   SizedBox(
                     height: heightPercent(4),
                   ),
-                  Text("Episódio: ${episode.episode}"),
+                  Text("Episódio: ${episode.episode}",
+                      textAlign: TextAlign.center),
                   SizedBox(
                     height: heightPercent(2),
                   ),
-                  Text("Data de Lançamento: ${episode.airDate}"),
+                  Text("Data de Lançamento: ${episode.airDate}",
+                      textAlign: TextAlign.center),
                   SizedBox(
                     height: heightPercent(2),
                   ),
@@ -31,7 +37,10 @@ void showEpisodesDetails(Episode episode, BuildContext context) {
         ),
         actions: [
           TextButton(
-            child: Text("OK"),
+            child: Text(
+              "OK",
+              style: TextStyle(color: Color(0xFF5CAD4A)),
+            ),
             onPressed: () {
               Navigator.pop(context);
             },

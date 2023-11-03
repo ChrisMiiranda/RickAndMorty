@@ -7,7 +7,7 @@ void showCharacterDetails(Character character, BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Center(child: Text(character.name)),
+        title: Center(child: Text(character.name, textAlign: TextAlign.center)),
         content: Wrap(
           children: [
             Center(
@@ -23,23 +23,31 @@ void showCharacterDetails(Character character, BuildContext context) {
                   SizedBox(
                     height: heightPercent(4),
                   ),
-                  Text("Status: ${character.status.toString().replaceAll('Status.', '')}"),
+                  Text(
+                      "Status: ${character.status.toString().replaceAll('Status.', '')}",
+                      textAlign: TextAlign.center),
                   SizedBox(
                     height: heightPercent(2),
                   ),
-                  Text("Espécie: ${character.species.toString().replaceAll('Species.', '')}"),
+                  Text(
+                      "Espécie: ${character.species.toString().replaceAll('Species.', '')}",
+                      textAlign: TextAlign.center),
                   SizedBox(
                     height: heightPercent(2),
                   ),
-                  Text("Gênero: ${character.gender.toString().replaceAll('Gender.', '')}"),
+                  Text(
+                      "Gênero: ${character.gender.toString().replaceAll('Gender.', '')}",
+                      textAlign: TextAlign.center),
                   SizedBox(
                     height: heightPercent(2),
                   ),
-                  Text("Origem: ${character.origin.name}"),
+                  Text("Origem: ${character.origin.name}",
+                      textAlign: TextAlign.center),
                   SizedBox(
                     height: heightPercent(2),
                   ),
-                  Text("Localização: ${character.location.name}"),
+                  Text("Localização: ${character.location.name}",
+                      textAlign: TextAlign.center),
                   SizedBox(
                     height: heightPercent(2),
                   ),
@@ -50,7 +58,7 @@ void showCharacterDetails(Character character, BuildContext context) {
         ),
         actions: [
           TextButton(
-            child: Text("OK"),
+            child: Text("OK", style: TextStyle(color: Color(0xFF5CAD4A))),
             onPressed: () {
               Navigator.pop(context);
             },
