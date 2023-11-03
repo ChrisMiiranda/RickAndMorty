@@ -1,16 +1,33 @@
-# test_rm_api
+# Projeto RickFlix
 
-A new Flutter project.
+### **Como executar**
 
-## Getting Started
+Para a instalação do flutter seguir a documentação oficial
+```sh
+https://docs.flutter.dev/get-started/install
+```
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Clone o repositório
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```sh
+git clone https://github.com/ChrisMiiranda/rick_and_morty.git
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Abra o diretório
+
+```sh
+cd rick_and_morty
+```
+
+Instale todas as dependências com
+
+```sh
+flutter pub get
+```
+
+Execute o projeto com
+
+```sh
+flutter run
+```
