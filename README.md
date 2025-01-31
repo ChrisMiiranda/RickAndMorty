@@ -1,33 +1,48 @@
-# Projeto RickFlix
+# 📱 Projeto RickFlix
 
-### **Como executar**
+Aplicativo desenvolvido para teste.
 
-Para a instalação do flutter seguir a documentação oficial
-```sh
-https://docs.flutter.dev/get-started/install
-```
+## 🛠️ Tecnologias Utilizadas
+
+- **Flutter**: 3
+- **Dart**: 3
+
+## 🚀 Funcionalidades
+
+- **Consumir API Ricky And Morty**
+- **Mostrar em tela uma lista de todos os episódios com as respectivas informações**
 
 
-Clone o repositório
+## 📦 Instalação e Execução
 
-```sh
-git clone https://github.com/ChrisMiiranda/rick_and_morty.git
-```
+### Pré-requisitos
 
-Abra o diretório
+- Flutter instalado ([Guia Oficial](https://docs.flutter.dev/get-started/install))
+- Dart SDK
+- Emulador ou dispositivo físico
 
-```sh
-cd rick_and_morty
-```
+### Passos para Rodar o Projeto
 
-Instale todas as dependências com
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/ChrisMiiranda/rick_and_morty
+   ```
+2. Entre na pasta do projeto:
+   ```sh
+   cd rick_and_morty
+   ```
+3. Instale as dependências:
+   ```sh
+   flutter pub get
+   ```
+4. Execute no emulador ou dispositivo:
+   ```sh
+   flutter run
+   ```
 
-```sh
-flutter pub get
-```
+## 📞 Contato
 
-Execute o projeto com
+Se precisar de suporte, entre em contato:
 
-```sh
-flutter run
-```
+- **Email:** [Email](christopher.ramos.miranda@gmail.com)
+- **LinkedIn:** [Linkedin](https://www.linkedin.com/in/christopher-ramos-miranda-973366156/)
