@@ -25,11 +25,11 @@ Aplicativo desenvolvido para teste.
 
 1. Clone o repositório:
    ```sh
-   git clone https://github.com/ChrisMiiranda/rick_and_morty
+   git clone https://github.com/ChrisMiiranda/RickAndMorty
    ```
 2. Entre na pasta do projeto:
    ```sh
-   cd rick_and_morty
+   cd RickAndMorty
    ```
 3. Instale as dependências:
    ```sh
