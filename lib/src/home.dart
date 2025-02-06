@@ -12,8 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 final _tabs = [
-  'PERSONAGENS',
-  'EPISÓDIOS',
+  {'label': 'Personagens', 'icon': Icons.person},
+  {'label': 'Episódios', 'icon': Icons.tv},
 ];
 
 class _HomePageState extends State<HomePage> {
@@ -24,23 +24,37 @@ class _HomePageState extends State<HomePage> {
       length: _tabs.length,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF5CAD4A),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFF5CAD4A), Color(0xFF3E8E41)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
           title: Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(child: Image.asset('assets/images/logo.png', height: heightPercent(15),)),
-                  SizedBox(child: Image.asset('assets/images/portal.png', height: heightPercent(15),)),
-                ],
-              )
-            ,
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/logo.png', height: heightPercent(12)),
+              ],
+            ),
           ),
           bottom: TabBar(
-            indicatorColor: Color(0xFFF0F2EB),
-            isScrollable: true,
-            tabs: [for (final tab in _tabs) Tab(child: Text(tab))],
+            indicator: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            tabs: [
+              for (final tab in _tabs)
+                Tab(
+                  icon: Icon(tab['icon'] as IconData?, size: 24),
+                  text: tab['label'] as String,
+                ),
+            ],
           ),
         ),
         body: TabBarView(
